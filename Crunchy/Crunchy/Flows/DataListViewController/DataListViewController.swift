@@ -21,36 +21,36 @@ final class DataListViewController: UIViewController {
 	}
 	// swiftlint:enable force_cast
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		updateMainView()
-		viewModel?.fetchRates()
-		bindTableView()
-	}
-
-	private func updateMainView() {
+	override func loadView() {
+		super.loadView()
 		self.view = DataListView()
 	}
 
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		viewModel?.fetchData()
+		bindTableView()
+	}
+
 	func bindTableView() {
-		//		dataListView.tableView.rx.setDelegate(self).disposed(by: disposeBag)
+		dataListView.tableView.rx.setDelegate(self).disposed(by: disposeBag)
 
 		viewModel?.data.bind(to: dataListView.tableView.rx.items) { [weak self] table, _, element in
-			if element.name == "hz" {
-				return (self?.viewModel?.makeTextCell(with: element, from: table))!
-			} else if element.name == "picture" {
-				return (self?.viewModel?.makeImageCell(with: element, from: table))!
-			} else {
-				return (self?.viewModel?.makeSelectorCell(with: element, from: table))!
-			}
+			return (self?.viewModel?.createCells(add: element, for: table)) ?? UITableViewCell()
 		}.disposed(by: disposeBag)
 	}
 
-	@objc func handleFromDateSelectedValueChanged() { }
 }
 
 extension DataListViewController: UITableViewDelegate {
+
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		//		self.viewModel?.didSelectRow(at: indexPath)
+		self.viewModel?.didSelectRow(at: indexPath)
+	}
+}
+
+extension DataListViewController: SelectorTableViewCellDelegate {
+	func changeValue(segment: Int) {
+		self.viewModel?.activeSegment = segment + 1
 	}
 }

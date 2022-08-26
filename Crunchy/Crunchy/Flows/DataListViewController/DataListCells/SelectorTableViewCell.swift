@@ -8,19 +8,23 @@
 import UIKit
 
 protocol SelectorTableViewCellDelegate: AnyObject {
-	func changeValue()
+	func changeValue(segment: Int)
 }
 
 final class SelectorTableViewCell: UITableViewCell {
 
 	// MARK: Variables
 
-	private let identifier: String = "selectorTableViewCell"
+	let identifier: String = "selectorTableViewCell"
 	private let mainBackgroundViewAnchors: CGFloat = 20.0
 	private let mainStackViewAnchors: CGFloat = 20.0
 	private let mainBackgroundViewBorderWidth: CGFloat = 3.0
 	private let mainStackViewSpacing: CGFloat = 20.0
 	private let mainBackgroundViewCornerRadius: CGFloat = 20.0
+	private let segmentControlWidthAnchorMultiplier: CGFloat = 0.7
+	private let nameLableFontSize: CGFloat = 25.0
+	private let textLableFontSize: CGFloat = 20.0
+	private var datum: Datum?
 	weak var delegate: SelectorTableViewCellDelegate?
 
 	// MARK: - Subviews
@@ -29,6 +33,8 @@ final class SelectorTableViewCell: UITableViewCell {
 		let lable = UILabel()
 		lable.numberOfLines = 0
 		lable.textAlignment = .center
+		lable.font = UIFont.boldSystemFont(ofSize: nameLableFontSize)
+		lable.textColor = .mainBlackColor
 		return lable
 	}()
 
@@ -37,6 +43,9 @@ final class SelectorTableViewCell: UITableViewCell {
 		segmentControl.translatesAutoresizingMaskIntoConstraints = false
 		segmentControl.selectedSegmentTintColor = .mainRedColor
 		segmentControl.tintColor = .lightGray
+		segmentControl.setTitleTextAttributes([
+										NSAttributedString.Key.foregroundColor: UIColor.mainBlackColor],
+										for: .normal)
 		return segmentControl
 	}()
 
@@ -44,6 +53,8 @@ final class SelectorTableViewCell: UITableViewCell {
 		let lable = UILabel()
 		lable.numberOfLines = 0
 		lable.textAlignment = .center
+		lable.textColor = .mainBlackColor
+		lable.font = UIFont.systemFont(ofSize: textLableFontSize)
 		return lable
 	}()
 
@@ -62,7 +73,7 @@ final class SelectorTableViewCell: UITableViewCell {
 		stackView.translatesAutoresizingMaskIntoConstraints = false
 		stackView.axis = .vertical
 		stackView.alignment = .center
-		stackView.distribution = .fillProportionally
+		stackView.distribution = .fill
 		stackView.spacing = mainStackViewSpacing
 		stackView.backgroundColor = .clear
 		return stackView
@@ -73,6 +84,7 @@ final class SelectorTableViewCell: UITableViewCell {
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: .default, reuseIdentifier: identifier)
 		self.selectionStyle = .none
+		self.accessibilityIdentifier = "selectorTableViewCell"
 		setupUI()
 		setupConstraints()
 	}
@@ -82,7 +94,6 @@ final class SelectorTableViewCell: UITableViewCell {
 	}
 
 	private func setupUI() {
-
 		self.mainStackView.addArrangedSubview(nameLable)
 		self.mainStackView.addArrangedSubview(segmentControl)
 		self.mainStackView.addArrangedSubview(textLable)
@@ -90,6 +101,7 @@ final class SelectorTableViewCell: UITableViewCell {
 		self.contentView.addSubview(mainBackgroundView)
 		self.mainBackgroundView.addSubview(mainStackView)
 		self.backgroundColor = .clear
+		addAction()
 	}
 
 	private func addAction() {
@@ -97,10 +109,25 @@ final class SelectorTableViewCell: UITableViewCell {
 	}
 
 	func configureCell(item: Datum) {
-
+		self.datum = item
 		self.nameLable.text = item.name
-		self.textLable.text = item.data?.variants?[(item.data?.selectedID ?? 1)].text ?? "1"
-		self.segmentControl.selectedSegmentIndex = (item.data?.selectedID) ?? 1
+		let selectedId = (item.data?.selectedID ?? 1) - 1
+		let text = item.data?.variants?[selectedId].text ?? "1"
+		self.textLable.text = text
+		self.segmentControl.selectedSegmentIndex = selectedId
+	}
+
+	func setLevel() {
+		switch self.segmentControl.selectedSegmentIndex {
+		case 0:
+			self.textLable.text = datum?.data?.variants?[0].text
+		case 1:
+			self.textLable.text = datum?.data?.variants?[1].text
+		case 2:
+			self.textLable.text = datum?.data?.variants?[2].text
+		default:
+			break
+		}
 	}
 
 	// MARK: - Constraints init
@@ -108,7 +135,6 @@ final class SelectorTableViewCell: UITableViewCell {
 	private func setupConstraints() {
 
 		NSLayoutConstraint.activate([
-
 			self.mainBackgroundView.topAnchor.constraint(equalTo: self.contentView.topAnchor,
 														 constant: mainBackgroundViewAnchors),
 			self.mainBackgroundView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor,
@@ -124,12 +150,17 @@ final class SelectorTableViewCell: UITableViewCell {
 			self.mainStackView.trailingAnchor.constraint(equalTo: self.mainBackgroundView.trailingAnchor,
 														 constant: -mainStackViewAnchors),
 			self.mainStackView.bottomAnchor.constraint(equalTo: self.mainBackgroundView.bottomAnchor,
-													   constant: -mainStackViewAnchors)
+													   constant: -mainStackViewAnchors),
+			self.segmentControl.widthAnchor.constraint(equalTo: self.mainStackView.widthAnchor,
+													   multiplier: segmentControlWidthAnchorMultiplier)
 		])
 	}
 
+	// MARK: Delegate methods
+
 	@objc func handleValueChange() {
-		delegate?.changeValue()
+		setLevel()
+		delegate?.changeValue(segment: self.segmentControl.selectedSegmentIndex)
 	}
 
 }

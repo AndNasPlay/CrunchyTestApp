@@ -14,8 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		_ application: UIApplication,
 		didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-		return true
-	}
+			return true
+		}
 
 	// MARK: UISceneSession Lifecycle
 
@@ -23,6 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		_ application: UIApplication,
 		configurationForConnecting connectingSceneSession: UISceneSession,
 		options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-		return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-	}
+			return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+		}
 }

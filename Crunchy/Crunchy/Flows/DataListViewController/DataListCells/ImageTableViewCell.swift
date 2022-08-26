@@ -6,19 +6,20 @@
 //
 
 import UIKit
-import Kingfisher
 
 final class ImageTableViewCell: UITableViewCell {
 
 	// MARK: Variables
 
-	private let identifier: String = "imageTableViewCell"
+	let identifier: String = "imageTableViewCell"
 	private let mainBackgroundViewAnchors: CGFloat = 20.0
 	private let mainStackViewAnchors: CGFloat = 20.0
 	private let mainImageViewAnchors: CGFloat = 120.0
 	private let mainBackgroundViewBorderWidth: CGFloat = 3.0
 	private let mainStackViewSpacing: CGFloat = 20.0
 	private let mainBackgroundViewCornerRadius: CGFloat = 20.0
+	private let nameLableFontSize: CGFloat = 25.0
+	private let textLableFontSize: CGFloat = 20.0
 
 	// MARK: - Subviews
 
@@ -26,6 +27,8 @@ final class ImageTableViewCell: UITableViewCell {
 		let lable = UILabel()
 		lable.numberOfLines = 0
 		lable.textAlignment = .center
+		lable.textColor = .mainBlackColor
+		lable.font = UIFont.boldSystemFont(ofSize: nameLableFontSize)
 		return lable
 	}()
 
@@ -39,6 +42,8 @@ final class ImageTableViewCell: UITableViewCell {
 		let lable = UILabel()
 		lable.numberOfLines = 0
 		lable.textAlignment = .center
+		lable.textColor = .mainBlackColor
+		lable.font = UIFont.systemFont(ofSize: textLableFontSize)
 		return lable
 	}()
 
@@ -68,6 +73,7 @@ final class ImageTableViewCell: UITableViewCell {
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: .default, reuseIdentifier: identifier)
 		self.selectionStyle = .none
+		self.accessibilityIdentifier = "imageTableViewCell"
 		setupUI()
 		setupConstraints()
 	}
@@ -77,29 +83,22 @@ final class ImageTableViewCell: UITableViewCell {
 	}
 
 	private func setupUI() {
-
 		self.mainStackView.addArrangedSubview(nameLable)
 		self.mainStackView.addArrangedSubview(mainImageView)
 		self.mainStackView.addArrangedSubview(textLable)
-
 		self.contentView.addSubview(mainBackgroundView)
 		self.mainBackgroundView.addSubview(mainStackView)
 		self.backgroundColor = .clear
 	}
 
 	func configureCell(item: Datum) {
-
 		self.nameLable.text = item.name
 		self.textLable.text = item.data?.text
-		let imgUrl: URL = URL(string: (item.data?.url)!)!
-		self.mainImageView.kf.setImage(with: imgUrl)
-
 	}
 
 	// MARK: - Constraints init
 
 	private func setupConstraints() {
-
 		NSLayoutConstraint.activate([
 
 			self.mainBackgroundView.topAnchor.constraint(equalTo: self.contentView.topAnchor,

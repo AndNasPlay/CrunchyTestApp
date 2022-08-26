@@ -1,0 +1,32 @@
+{
+  "configurations" : [
+    {
+      "id" : "DEAE1359-7C52-4E03-8E8E-ED2580779AF4",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:Crunchy.xcodeproj",
+          "identifier" : "167EFF0B28B7A6E000B2CE02",
+          "name" : "Crunchy"
+        }
+      ]
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Crunchy.xcodeproj",
+        "identifier" : "1605EB6728B933F400F69880",
+        "name" : "CrunchyTests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -11,12 +11,14 @@ final class TextTableViewCell: UITableViewCell {
 
 	// MARK: Variables
 
-	private let identifier: String = "textTableViewCell"
+	let identifier: String = "textTableViewCell"
 	private let textStackViewSpacing: CGFloat = 20.0
 	private let mainBackgroundViewBorderWidth: CGFloat = 3.0
 	private let mainBackgroundViewCornerRadius: CGFloat = 20.0
 	private let mainBackgroundViewAnchors: CGFloat = 20.0
 	private let textStackViewAnchors: CGFloat = 20.0
+	private let nameLableFontSize: CGFloat = 25.0
+	private let textLableFontSize: CGFloat = 20.0
 
 	// MARK: - Subviews
 
@@ -24,6 +26,8 @@ final class TextTableViewCell: UITableViewCell {
 		let lable = UILabel()
 		lable.numberOfLines = 0
 		lable.textAlignment = .center
+		lable.textColor = .mainBlackColor
+		lable.font = UIFont.boldSystemFont(ofSize: nameLableFontSize)
 		return lable
 	}()
 
@@ -31,6 +35,8 @@ final class TextTableViewCell: UITableViewCell {
 		let lable = UILabel()
 		lable.numberOfLines = 0
 		lable.textAlignment = .center
+		lable.textColor = .mainBlackColor
+		lable.font = UIFont.systemFont(ofSize: textLableFontSize)
 		return lable
 	}()
 
@@ -40,7 +46,7 @@ final class TextTableViewCell: UITableViewCell {
 		view.backgroundColor = .white
 		view.layer.borderColor = UIColor.mainGreenColor.cgColor
 		view.layer.borderWidth = mainBackgroundViewBorderWidth
-		self.mainBackgroundView.layer.cornerRadius = mainBackgroundViewCornerRadius
+		view.layer.cornerRadius = mainBackgroundViewCornerRadius
 		return view
 	}()
 
@@ -60,6 +66,7 @@ final class TextTableViewCell: UITableViewCell {
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: .default, reuseIdentifier: identifier)
 		self.selectionStyle = .none
+		self.accessibilityIdentifier = "textTableViewCell"
 		setupUI()
 		setupConstraints()
 	}
@@ -69,20 +76,16 @@ final class TextTableViewCell: UITableViewCell {
 	}
 
 	private func setupUI() {
-
 		self.textStackView.addArrangedSubview(nameLable)
 		self.textStackView.addArrangedSubview(textLable)
-
 		self.contentView.addSubview(mainBackgroundView)
 		self.mainBackgroundView.addSubview(textStackView)
 		self.backgroundColor = .clear
 	}
 
 	func configureCell(item: Datum) {
-
 		self.nameLable.text = item.name
 		self.textLable.text = item.data?.text
-
 	}
 
 	// MARK: - Constraints init
@@ -90,7 +93,6 @@ final class TextTableViewCell: UITableViewCell {
 	private func setupConstraints() {
 
 		NSLayoutConstraint.activate([
-
 			self.mainBackgroundView.topAnchor.constraint(equalTo: self.contentView.topAnchor,
 														 constant: mainBackgroundViewAnchors),
 			self.mainBackgroundView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor,

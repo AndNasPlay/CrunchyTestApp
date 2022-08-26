@@ -11,13 +11,16 @@ final class MainScreenViewController: UIViewController, MainScreenViewDelegate {
 
 	var viewModel: MainScreenViewModel?
 
-	let networkManager = NetworkManager.shared
-
 	// swiftlint:disable force_cast
 	private var mainViewControllerView: MainScreenView {
 		return self.view as! MainScreenView
 	}
 	// swiftlint:enable force_cast
+
+	override func loadView() {
+		super.loadView()
+		self.view = MainScreenView()
+	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -25,14 +28,12 @@ final class MainScreenViewController: UIViewController, MainScreenViewDelegate {
 	}
 
 	private func updateMainView() {
-		self.view = MainScreenView()
 		self.mainViewControllerView.delegate = self
 	}
 
 	// MARK: Delegate methods
 
 	func getStarted() {
-		print("поехали")
 		viewModel?.getStarted()
 	}
 }

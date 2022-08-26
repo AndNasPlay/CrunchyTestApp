@@ -18,6 +18,7 @@ final class MainScreenView: UIView {
 	private let mainButtonHeightAnchor: CGFloat = 80.0
 	private let mainButtonTopAnchor: CGFloat = 10.0
 	private let mainButtonTrailingLeadingAnchor: CGFloat = 60.0
+	private let mainButtonFont: CGFloat = 30.0
 	private let logoImageViewHeightAnchor: CGFloat = 100.0
 	private let logoImageViewTopAnchor: CGFloat = 150.0
 	private let logoImageViewTrailingLeadingAnchor: CGFloat = 60.0
@@ -29,7 +30,7 @@ final class MainScreenView: UIView {
 	private(set) lazy var logoImageView: UIImageView = {
 		let imageView = UIImageView(frame: .zero)
 		imageView.image = UIImage(named: "logo")
-		imageView.contentMode = .scaleToFill
+		imageView.contentMode = .scaleAspectFit
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		return imageView
 	}()
@@ -39,7 +40,7 @@ final class MainScreenView: UIView {
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.setTitle("Start", for: .normal)
 		button.setTitleColor(UIColor.white, for: .normal)
-		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
+		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: mainButtonFont)
 		button.titleLabel?.adjustsFontSizeToFitWidth = true
 		button.accessibilityIdentifier = "mainButton"
 		return button

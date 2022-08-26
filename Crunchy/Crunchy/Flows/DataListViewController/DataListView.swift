@@ -11,9 +11,9 @@ final class DataListView: UIView {
 
 	// MARK: Variables
 
-	let textCellIdentifier = "textTableViewCell"
-	let imageCellIdentifier = "imageTableViewCell"
-	let selectorTableViewCell = "selectorTableViewCell"
+	let textCellIdentifier = TextTableViewCell().identifier
+	let imageCellIdentifier = ImageTableViewCell().identifier
+	let selectorTableViewCell = SelectorTableViewCell().identifier
 
 	// MARK: - Subviews
 
@@ -23,6 +23,7 @@ final class DataListView: UIView {
 		tableView.register(TextTableViewCell.self, forCellReuseIdentifier: textCellIdentifier)
 		tableView.register(ImageTableViewCell.self, forCellReuseIdentifier: imageCellIdentifier)
 		tableView.register(SelectorTableViewCell.self, forCellReuseIdentifier: selectorTableViewCell)
+		tableView.backgroundColor = .clear
 		tableView.separatorStyle = .none
 		return tableView
 	}()
@@ -56,7 +57,6 @@ final class DataListView: UIView {
 		let safeArea = self.safeAreaLayoutGuide
 
 		NSLayoutConstraint.activate([
-
 			self.tableView.topAnchor.constraint(equalTo: safeArea.topAnchor),
 			self.tableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
 			self.tableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),

@@ -17,6 +17,8 @@ final class DataListCoordinator: Coordinator {
 
 	var parentCoordinator: MainScreenCoordinator?
 
+	var dataAlertViewController: DataAlertViewController?
+
 	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
 	}
@@ -25,14 +27,15 @@ final class DataListCoordinator: Coordinator {
 		let dataListViewModel = DataListViewModel()
 		dataListViewModel.coordinator = self
 		dataListViewController.viewModel = dataListViewModel
-		navigationController.setViewControllers([dataListViewController], animated: false)
+		navigationController.isNavigationBarHidden = true
+		navigationController.setViewControllers([dataListViewController], animated: true)
 	}
 
-	func getInfo(message: String) {
-		let alertController = UIAlertController(title: "Information", message: message, preferredStyle: .alert)
-		let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-		alertController.addAction(action)
-		dataListViewController.present(alertController, animated: true, completion: nil)
+	func getInfo(message: String, name: String) {
+		let dataAlertCoordinator = DataAlertCoordinator()
+		dataAlertCoordinator.parentCoordinator = self
+		dataAlertViewController = DataAlertViewController()
+		dataAlertCoordinator.start(name: name, message: message)
 	}
 
 	func childDidFinish(_ childCoordinator: Coordinator) {

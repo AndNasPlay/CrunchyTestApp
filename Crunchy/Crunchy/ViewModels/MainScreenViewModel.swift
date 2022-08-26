@@ -7,7 +7,11 @@
 
 import Foundation
 
-final class MainScreenViewModel {
+protocol MainScreenViewModelProtocol {
+	func getStarted()
+}
+
+final class MainScreenViewModel: MainScreenViewModelProtocol {
 
 	var coordinator: MainScreenCoordinator?
 

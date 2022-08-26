@@ -35,6 +35,20 @@ struct DataClass: Codable {
 
 // MARK: - Variant
 struct Variants: Codable {
-	let id: Int?
+	let segmentId: Int?
 	let text: String?
+}
+
+extension Variants {
+
+	private enum CodingKeys: String, CodingKey {
+		case segmentId = "id"
+		case text
+	}
+
+	init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		segmentId = try container.decode(Int.self, forKey: .segmentId)
+		text = try container.decode(String.self, forKey: .text)
+	}
 }

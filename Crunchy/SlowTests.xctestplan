@@ -1,0 +1,42 @@
+{
+  "configurations" : [
+    {
+      "id" : "F5E7445A-60E0-4443-BEF4-751F2E4C1AA9",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:Crunchy.xcodeproj",
+          "identifier" : "167EFF0B28B7A6E000B2CE02",
+          "name" : "Crunchy"
+        }
+      ]
+    },
+    "guardMallocEnabled" : true,
+    "mallocGuardEdgesEnabled" : true,
+    "mallocScribbleEnabled" : true,
+    "nsZombieEnabled" : true,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Crunchy.xcodeproj",
+      "identifier" : "167EFF0B28B7A6E000B2CE02",
+      "name" : "Crunchy"
+    },
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Crunchy.xcodeproj",
+        "identifier" : "1605EB7428B933FF00F69880",
+        "name" : "CrunchyUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

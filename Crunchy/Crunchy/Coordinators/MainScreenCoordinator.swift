@@ -11,8 +11,6 @@ final class MainScreenCoordinator: Coordinator {
 
 	private(set) var childCoordinators: [Coordinator] = []
 
-	//	let networkManager = NetworkManager()
-
 	private let navigationController: UINavigationController
 
 	init(navigationController: UINavigationController) {

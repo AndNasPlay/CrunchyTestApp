@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1604E86428B8A696006E95CB /* DataAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1604E86328B8A696006E95CB /* DataAlertViewModel.swift */; };
+		1604E86628B8A6D5006E95CB /* DataAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1604E86528B8A6D4006E95CB /* DataAlertView.swift */; };
+		1604E86828B8A84D006E95CB /* DataAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1604E86728B8A84D006E95CB /* DataAlertViewController.swift */; };
+		1605EB6B28B933F400F69880 /* CrunchyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1605EB6A28B933F400F69880 /* CrunchyTests.swift */; };
+		1605EB7828B933FF00F69880 /* CrunchyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1605EB7728B933FF00F69880 /* CrunchyUITests.swift */; };
+		1605EB7A28B933FF00F69880 /* CrunchyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1605EB7928B933FF00F69880 /* CrunchyUITestsLaunchTests.swift */; };
 		167EFF1028B7A6E000B2CE02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EFF0F28B7A6E000B2CE02 /* AppDelegate.swift */; };
 		167EFF1228B7A6E000B2CE02 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EFF1128B7A6E000B2CE02 /* SceneDelegate.swift */; };
 		167EFF1428B7A6E000B2CE02 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EFF1328B7A6E000B2CE02 /* MainScreenViewController.swift */; };
@@ -16,7 +22,7 @@
 		167EFF3228B7AA0100B2CE02 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EFF3128B7AA0100B2CE02 /* AppCoordinator.swift */; };
 		167EFF3428B7AA1000B2CE02 /* MainScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EFF3328B7AA1000B2CE02 /* MainScreenCoordinator.swift */; };
 		167EFF3628B7AA3000B2CE02 /* DataListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EFF3528B7AA3000B2CE02 /* DataListCoordinator.swift */; };
-		167EFF3828B7AA4000B2CE02 /* DataDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EFF3728B7AA4000B2CE02 /* DataDetailCoordinator.swift */; };
+		167EFF3828B7AA4000B2CE02 /* DataAlertCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EFF3728B7AA4000B2CE02 /* DataAlertCoordinator.swift */; };
 		167EFF3A28B7AAB900B2CE02 /* Pryaniky.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EFF3928B7AAB900B2CE02 /* Pryaniky.swift */; };
 		167EFF3C28B7AC0C00B2CE02 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EFF3B28B7AC0C00B2CE02 /* MainScreenViewModel.swift */; };
 		167EFF3E28B7ACE100B2CE02 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EFF3D28B7ACE100B2CE02 /* MainScreenView.swift */; };
@@ -36,7 +42,34 @@
 		167EFF7028B7E7FE00B2CE02 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 167EFF6F28B7E7FE00B2CE02 /* RxSwift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1605EB6C28B933F400F69880 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 167EFF0428B7A6E000B2CE02 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 167EFF0B28B7A6E000B2CE02;
+			remoteInfo = Crunchy;
+		};
+		1605EB7B28B933FF00F69880 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 167EFF0428B7A6E000B2CE02 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 167EFF0B28B7A6E000B2CE02;
+			remoteInfo = Crunchy;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		1604E86328B8A696006E95CB /* DataAlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAlertViewModel.swift; sourceTree = "<group>"; };
+		1604E86528B8A6D4006E95CB /* DataAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAlertView.swift; sourceTree = "<group>"; };
+		1604E86728B8A84D006E95CB /* DataAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAlertViewController.swift; sourceTree = "<group>"; };
+		1605EB6828B933F400F69880 /* CrunchyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrunchyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1605EB6A28B933F400F69880 /* CrunchyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrunchyTests.swift; sourceTree = "<group>"; };
+		1605EB7528B933FF00F69880 /* CrunchyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrunchyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1605EB7728B933FF00F69880 /* CrunchyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrunchyUITests.swift; sourceTree = "<group>"; };
+		1605EB7928B933FF00F69880 /* CrunchyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrunchyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1605EB8028B938F600F69880 /* FastTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = FastTests.xctestplan; sourceTree = "<group>"; };
+		1605EB8128B9394500F69880 /* SlowTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SlowTests.xctestplan; sourceTree = "<group>"; };
 		167EFF0C28B7A6E000B2CE02 /* Crunchy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Crunchy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		167EFF0F28B7A6E000B2CE02 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		167EFF1128B7A6E000B2CE02 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,7 +81,7 @@
 		167EFF3128B7AA0100B2CE02 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		167EFF3328B7AA1000B2CE02 /* MainScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCoordinator.swift; sourceTree = "<group>"; };
 		167EFF3528B7AA3000B2CE02 /* DataListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListCoordinator.swift; sourceTree = "<group>"; };
-		167EFF3728B7AA4000B2CE02 /* DataDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDetailCoordinator.swift; sourceTree = "<group>"; };
+		167EFF3728B7AA4000B2CE02 /* DataAlertCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAlertCoordinator.swift; sourceTree = "<group>"; };
 		167EFF3928B7AAB900B2CE02 /* Pryaniky.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pryaniky.swift; sourceTree = "<group>"; };
 		167EFF3B28B7AC0C00B2CE02 /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
 		167EFF3D28B7ACE100B2CE02 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
@@ -65,6 +98,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1605EB6528B933F400F69880 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1605EB7228B933FF00F69880 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		167EFF0928B7A6E000B2CE02 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -79,10 +126,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1605EB6928B933F400F69880 /* CrunchyTests */ = {
+			isa = PBXGroup;
+			children = (
+				1605EB6A28B933F400F69880 /* CrunchyTests.swift */,
+			);
+			path = CrunchyTests;
+			sourceTree = "<group>";
+		};
+		1605EB7628B933FF00F69880 /* CrunchyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1605EB7728B933FF00F69880 /* CrunchyUITests.swift */,
+				1605EB7928B933FF00F69880 /* CrunchyUITestsLaunchTests.swift */,
+			);
+			path = CrunchyUITests;
+			sourceTree = "<group>";
+		};
 		167EFF0328B7A6E000B2CE02 = {
 			isa = PBXGroup;
 			children = (
+				1605EB8128B9394500F69880 /* SlowTests.xctestplan */,
+				1605EB8028B938F600F69880 /* FastTests.xctestplan */,
 				167EFF0E28B7A6E000B2CE02 /* Crunchy */,
+				1605EB6928B933F400F69880 /* CrunchyTests */,
+				1605EB7628B933FF00F69880 /* CrunchyUITests */,
 				167EFF0D28B7A6E000B2CE02 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,6 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				167EFF0C28B7A6E000B2CE02 /* Crunchy.app */,
+				1605EB6828B933F400F69880 /* CrunchyTests.xctest */,
+				1605EB7528B933FF00F69880 /* CrunchyUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,10 +182,9 @@
 		167EFF2428B7A83200B2CE02 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
-				167EFF1A28B7A6E500B2CE02 /* LaunchScreen.storyboard */,
 				167EFF2A28B7A97000B2CE02 /* MainScreenViewController */,
 				167EFF2B28B7A98000B2CE02 /* DataListViewController */,
-				167EFF2D28B7A99800B2CE02 /* DataDetailViewController */,
+				167EFF2D28B7A99800B2CE02 /* DataAlertViewController */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -127,7 +196,7 @@
 				167EFF3128B7AA0100B2CE02 /* AppCoordinator.swift */,
 				167EFF3328B7AA1000B2CE02 /* MainScreenCoordinator.swift */,
 				167EFF3528B7AA3000B2CE02 /* DataListCoordinator.swift */,
-				167EFF3728B7AA4000B2CE02 /* DataDetailCoordinator.swift */,
+				167EFF3728B7AA4000B2CE02 /* DataAlertCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -145,6 +214,7 @@
 			children = (
 				167EFF3B28B7AC0C00B2CE02 /* MainScreenViewModel.swift */,
 				167EFF4C28B7BAD700B2CE02 /* DataListViewModel.swift */,
+				1604E86328B8A696006E95CB /* DataAlertViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -160,6 +230,7 @@
 		167EFF2928B7A89900B2CE02 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				167EFF1A28B7A6E500B2CE02 /* LaunchScreen.storyboard */,
 				167EFF0F28B7A6E000B2CE02 /* AppDelegate.swift */,
 				167EFF1128B7A6E000B2CE02 /* SceneDelegate.swift */,
 				167EFF1828B7A6E500B2CE02 /* Assets.xcassets */,
@@ -187,11 +258,13 @@
 			path = DataListViewController;
 			sourceTree = "<group>";
 		};
-		167EFF2D28B7A99800B2CE02 /* DataDetailViewController */ = {
+		167EFF2D28B7A99800B2CE02 /* DataAlertViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1604E86728B8A84D006E95CB /* DataAlertViewController.swift */,
+				1604E86528B8A6D4006E95CB /* DataAlertView.swift */,
 			);
-			path = DataDetailViewController;
+			path = DataAlertViewController;
 			sourceTree = "<group>";
 		};
 		167EFF2E28B7A9CD00B2CE02 /* Network */ = {
@@ -225,6 +298,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1605EB6728B933F400F69880 /* CrunchyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1605EB6E28B933F400F69880 /* Build configuration list for PBXNativeTarget "CrunchyTests" */;
+			buildPhases = (
+				1605EB6428B933F400F69880 /* Sources */,
+				1605EB6528B933F400F69880 /* Frameworks */,
+				1605EB6628B933F400F69880 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1605EB6D28B933F400F69880 /* PBXTargetDependency */,
+			);
+			name = CrunchyTests;
+			productName = CrunchyTests;
+			productReference = 1605EB6828B933F400F69880 /* CrunchyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1605EB7428B933FF00F69880 /* CrunchyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1605EB7D28B933FF00F69880 /* Build configuration list for PBXNativeTarget "CrunchyUITests" */;
+			buildPhases = (
+				1605EB7128B933FF00F69880 /* Sources */,
+				1605EB7228B933FF00F69880 /* Frameworks */,
+				1605EB7328B933FF00F69880 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1605EB7C28B933FF00F69880 /* PBXTargetDependency */,
+			);
+			name = CrunchyUITests;
+			productName = CrunchyUITests;
+			productReference = 1605EB7528B933FF00F69880 /* CrunchyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		167EFF0B28B7A6E000B2CE02 /* Crunchy */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 167EFF2028B7A6E500B2CE02 /* Build configuration list for PBXNativeTarget "Crunchy" */;
@@ -259,6 +368,14 @@
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
+					1605EB6728B933F400F69880 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 167EFF0B28B7A6E000B2CE02;
+					};
+					1605EB7428B933FF00F69880 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 167EFF0B28B7A6E000B2CE02;
+					};
 					167EFF0B28B7A6E000B2CE02 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
@@ -283,11 +400,27 @@
 			projectRoot = "";
 			targets = (
 				167EFF0B28B7A6E000B2CE02 /* Crunchy */,
+				1605EB6728B933F400F69880 /* CrunchyTests */,
+				1605EB7428B933FF00F69880 /* CrunchyUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1605EB6628B933F400F69880 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1605EB7328B933FF00F69880 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		167EFF0A28B7A6E000B2CE02 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -320,6 +453,23 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1605EB6428B933F400F69880 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1605EB6B28B933F400F69880 /* CrunchyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1605EB7128B933FF00F69880 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1605EB7828B933FF00F69880 /* CrunchyUITests.swift in Sources */,
+				1605EB7A28B933FF00F69880 /* CrunchyUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		167EFF0828B7A6E000B2CE02 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -339,16 +489,32 @@
 				167EFF3228B7AA0100B2CE02 /* AppCoordinator.swift in Sources */,
 				167EFF3428B7AA1000B2CE02 /* MainScreenCoordinator.swift in Sources */,
 				167EFF3E28B7ACE100B2CE02 /* MainScreenView.swift in Sources */,
+				1604E86628B8A6D5006E95CB /* DataAlertView.swift in Sources */,
 				167EFF1028B7A6E000B2CE02 /* AppDelegate.swift in Sources */,
+				1604E86828B8A84D006E95CB /* DataAlertViewController.swift in Sources */,
 				167EFF1228B7A6E000B2CE02 /* SceneDelegate.swift in Sources */,
 				167EFF4F28B7BBD000B2CE02 /* NetworkManager.swift in Sources */,
 				167EFF6928B7E3DC00B2CE02 /* ImageTableViewCell.swift in Sources */,
 				167EFF4D28B7BAD700B2CE02 /* DataListViewModel.swift in Sources */,
-				167EFF3828B7AA4000B2CE02 /* DataDetailCoordinator.swift in Sources */,
+				167EFF3828B7AA4000B2CE02 /* DataAlertCoordinator.swift in Sources */,
+				1604E86428B8A696006E95CB /* DataAlertViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1605EB6D28B933F400F69880 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 167EFF0B28B7A6E000B2CE02 /* Crunchy */;
+			targetProxy = 1605EB6C28B933F400F69880 /* PBXContainerItemProxy */;
+		};
+		1605EB7C28B933FF00F69880 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 167EFF0B28B7A6E000B2CE02 /* Crunchy */;
+			targetProxy = 1605EB7B28B933FF00F69880 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		167EFF1A28B7A6E500B2CE02 /* LaunchScreen.storyboard */ = {
@@ -362,6 +528,80 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1605EB6F28B933F400F69880 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 97WCP8NGSS;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AndNasPlay.CrunchyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Crunchy.app/Crunchy";
+			};
+			name = Debug;
+		};
+		1605EB7028B933F400F69880 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 97WCP8NGSS;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AndNasPlay.CrunchyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Crunchy.app/Crunchy";
+			};
+			name = Release;
+		};
+		1605EB7E28B933FF00F69880 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 97WCP8NGSS;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AndNasPlay.CrunchyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Crunchy;
+			};
+			name = Debug;
+		};
+		1605EB7F28B933FF00F69880 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 97WCP8NGSS;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AndNasPlay.CrunchyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Crunchy;
+			};
+			name = Release;
+		};
 		167EFF1E28B7A6E500B2CE02 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -488,6 +728,7 @@
 				INFOPLIST_FILE = Crunchy/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -515,6 +756,7 @@
 				INFOPLIST_FILE = Crunchy/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -533,6 +775,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1605EB6E28B933F400F69880 /* Build configuration list for PBXNativeTarget "CrunchyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1605EB6F28B933F400F69880 /* Debug */,
+				1605EB7028B933F400F69880 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1605EB7D28B933FF00F69880 /* Build configuration list for PBXNativeTarget "CrunchyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1605EB7E28B933FF00F69880 /* Debug */,
+				1605EB7F28B933FF00F69880 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		167EFF0728B7A6E000B2CE02 /* Build configuration list for PBXProject "Crunchy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -7,68 +7,97 @@
 
 import UIKit
 import RxSwift
+import Kingfisher
 
-final class DataListViewModel {
+protocol DataListViewModelProtocol {
+	func alert(message: String)
+	func didSelectRow(at indexPath: IndexPath)
+	func fetchData()
+	func createCells(add element: Datum, for table: UITableView) -> UITableViewCell
+}
 
-	let title = "Cranchy"
+final class DataListViewModel: DataListViewModelProtocol {
 
 	var coordinator: DataListCoordinator?
 
 	public let data = BehaviorSubject(value: [Datum]())
 
+	private var tableViewArr: [Datum] = []
+
+	public var activeSegment: Int = 0
+
 	private let networkManager = NetworkManager.shared
 
-	var alertMessage: String = ""
-
-	func fetchRates() {
-
+	func fetchData() {
 		networkManager.getData { [weak self] (result, error) in
 			guard let self = self else { return }
-			guard let model = result?.data else { self.alertMessage = error?.localizedDescription ?? ""; return }
-			guard let views = result?.view else { self.alertMessage = error?.localizedDescription ?? ""; return }
-			var tableViewArr: [Datum] = []
-			views.forEach { view in
-				for counter in 0..<model.count {
-					if view == model[counter].name {
-						tableViewArr.append(model[counter])
-						break
+			if error != nil {
+				self.alert(message: error!.localizedDescription)
+			} else {
+				guard let model = result?.data else { self.alert(message: "Data is empty"); return }
+				guard let views = result?.view else { self.alert(message: "Views is empty"); return }
+				views.forEach { view in
+					for counter in 0..<model.count {
+						if view == model[counter].name {
+							self.tableViewArr.append(model[counter])
+							break
+						}
 					}
 				}
+				self.data.on(.next(self.tableViewArr))
 			}
-			self.data.on(.next(tableViewArr))
 		}
 	}
 
-	func makeTextCell(with element: Datum, from table: UITableView) -> UITableViewCell {
-		// swiftlint:disable force_cast
-	  let cell = table.dequeueReusableCell(withIdentifier: "textTableViewCell") as! TextTableViewCell
-		// swiftlint:enable force_cast
-		cell.configureCell(item: element)
-	  return cell
+	func createCells(add element: Datum, for table: UITableView) -> UITableViewCell {
+		if element.name == "hz" {
+			return makeTextCell(with: element, from: table)
+		} else if element.name == "picture" {
+			return makeImageCell(with: element, from: table)
+		} else {
+			return makeSelectorCell(with: element, from: table)
+		}
 	}
 
-	func makeImageCell(with element: Datum, from table: UITableView) -> UITableViewCell {
+	private func makeTextCell(with element: Datum, from table: UITableView) -> UITableViewCell {
 		// swiftlint:disable force_cast
-	  let cell = table.dequeueReusableCell(withIdentifier: "imageTableViewCell") as! ImageTableViewCell
+		let cell = table.dequeueReusableCell(withIdentifier: TextTableViewCell().identifier) as! TextTableViewCell
 		// swiftlint:enable force_cast
 		cell.configureCell(item: element)
-	  return cell
+		return cell
 	}
 
-	func makeSelectorCell(with element: Datum, from table: UITableView) -> UITableViewCell {
+	private func makeImageCell(with element: Datum, from table: UITableView) -> UITableViewCell {
 		// swiftlint:disable force_cast
-	  let cell = table.dequeueReusableCell(withIdentifier: "selectorTableViewCell") as! SelectorTableViewCell
+		let cell = table.dequeueReusableCell(withIdentifier: ImageTableViewCell().identifier) as! ImageTableViewCell
 		// swiftlint:enable force_cast
 		cell.configureCell(item: element)
-	  return cell
+		let imgUrl: URL = URL(string: (element.data?.url)!)!
+		cell.mainImageView.kf.setImage(with: imgUrl)
+		return cell
+	}
+
+	private func makeSelectorCell(with element: Datum, from table: UITableView) -> UITableViewCell {
+		// swiftlint:disable force_cast
+		let cell = table.dequeueReusableCell(withIdentifier: SelectorTableViewCell().identifier) as! SelectorTableViewCell
+		// swiftlint:enable force_cast
+		cell.configureCell(item: element)
+		cell.delegate = coordinator?.dataListViewController
+		self.activeSegment = (element.data?.selectedID ?? 1)
+		return cell
+	}
+
+	func alert(message: String) {
+		coordinator?.getInfo(message: message, name: "Error")
 	}
 
 	func didSelectRow(at indexPath: IndexPath) {
-
+		let name = tableViewArr[indexPath.row].name ?? "name"
+		let message = tableViewArr[indexPath.row].data?.text ?? "message"
+		if message == "message" {
+			coordinator?.getInfo(message: "Active segment number \(self.activeSegment)", name: name)
+		} else {
+			coordinator?.getInfo(message: message, name: name)
+		}
 	}
-
-	func getInfo() {
-		coordinator?.getInfo(message: alertMessage)
-	}
-
 }
