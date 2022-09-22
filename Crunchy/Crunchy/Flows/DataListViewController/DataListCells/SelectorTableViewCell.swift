@@ -39,13 +39,13 @@ final class SelectorTableViewCell: UITableViewCell {
 	}()
 
 	private(set) lazy var segmentControl: UISegmentedControl = {
-		let segmentControl = UISegmentedControl(items: ["1", "2", "3"])
+		let segmentControl = UISegmentedControl()
 		segmentControl.translatesAutoresizingMaskIntoConstraints = false
 		segmentControl.selectedSegmentTintColor = .mainRedColor
 		segmentControl.tintColor = .lightGray
 		segmentControl.setTitleTextAttributes([
-										NSAttributedString.Key.foregroundColor: UIColor.mainBlackColor],
-										for: .normal)
+			NSAttributedString.Key.foregroundColor: UIColor.mainBlackColor],
+											  for: .normal)
 		return segmentControl
 	}()
 
@@ -97,7 +97,6 @@ final class SelectorTableViewCell: UITableViewCell {
 		self.mainStackView.addArrangedSubview(nameLable)
 		self.mainStackView.addArrangedSubview(segmentControl)
 		self.mainStackView.addArrangedSubview(textLable)
-
 		self.contentView.addSubview(mainBackgroundView)
 		self.mainBackgroundView.addSubview(mainStackView)
 		self.backgroundColor = .clear
@@ -108,26 +107,44 @@ final class SelectorTableViewCell: UITableViewCell {
 		self.segmentControl.addTarget(self, action: #selector(handleValueChange), for: .valueChanged)
 	}
 
+	private func updateSegmentControl(variants: [Variants]) {
+		if self.segmentControl.numberOfSegments == 0 {
+			for counter in 0..<variants.count {
+				guard let variantId = variants[counter].segmentId else { return }
+				self.segmentControl.insertSegment(withTitle: "\(variantId)", at: counter, animated: false)
+			}
+		} else {
+			self.segmentControl.removeAllSegments()
+			for counter in 0..<variants.count {
+				guard let variantId = variants[counter].segmentId else { return }
+				self.segmentControl.insertSegment(withTitle: "\(variantId)", at: counter, animated: false)
+			}
+		}
+	}
+
 	func configureCell(item: Datum) {
 		self.datum = item
 		self.nameLable.text = item.name
-		let selectedId = (item.data?.selectedID ?? 1) - 1
-		let text = item.data?.variants?[selectedId].text ?? "1"
-		self.textLable.text = text
-		self.segmentControl.selectedSegmentIndex = selectedId
+		if let variants = item.data?.variants {
+			updateSegmentControl(variants: variants)
+		}
+		if let selectedId = item.data?.selectedID {
+			guard let variantsCount = item.data?.variants?.count else { return }
+			guard let variants = item.data?.variants else { return }
+			for counter in 0..<variantsCount {
+				if variants[counter].segmentId == selectedId {
+					self.segmentControl.selectedSegmentIndex = counter
+					if let text = item.data?.variants?[counter].text {
+						self.textLable.text = text
+					}
+				}
+			}
+		}
 	}
 
 	func setLevel() {
-		switch self.segmentControl.selectedSegmentIndex {
-		case 0:
-			self.textLable.text = datum?.data?.variants?[0].text
-		case 1:
-			self.textLable.text = datum?.data?.variants?[1].text
-		case 2:
-			self.textLable.text = datum?.data?.variants?[2].text
-		default:
-			break
-		}
+		let number = self.segmentControl.selectedSegmentIndex
+		self.textLable.text = datum?.data?.variants?[number].text
 	}
 
 	// MARK: - Constraints init
@@ -150,9 +167,7 @@ final class SelectorTableViewCell: UITableViewCell {
 			self.mainStackView.trailingAnchor.constraint(equalTo: self.mainBackgroundView.trailingAnchor,
 														 constant: -mainStackViewAnchors),
 			self.mainStackView.bottomAnchor.constraint(equalTo: self.mainBackgroundView.bottomAnchor,
-													   constant: -mainStackViewAnchors),
-			self.segmentControl.widthAnchor.constraint(equalTo: self.mainStackView.widthAnchor,
-													   multiplier: segmentControlWidthAnchorMultiplier)
+													   constant: -mainStackViewAnchors)
 		])
 	}
 
