@@ -34,12 +34,13 @@ final class DataListViewModel: DataListViewModelProtocol {
 			if error != nil {
 				self.alert(message: error!.localizedDescription)
 			} else {
-				guard let model = result?.data else { self.alert(message: "Data is empty"); return }
+				guard var model = result?.data else { self.alert(message: "Data is empty"); return }
 				guard let views = result?.view else { self.alert(message: "Views is empty"); return }
 				views.forEach { view in
 					for counter in 0..<model.count {
 						if view == model[counter].name {
 							self.tableViewArr.append(model[counter])
+							model.remove(at: counter)
 							break
 						}
 					}
@@ -54,8 +55,10 @@ final class DataListViewModel: DataListViewModelProtocol {
 			return makeTextCell(with: element, from: table)
 		} else if element.name == "picture" {
 			return makeImageCell(with: element, from: table)
-		} else {
+		} else if element.name == "selector" {
 			return makeSelectorCell(with: element, from: table)
+		} else {
+			return makeDefaultCell(for: table)
 		}
 	}
 
@@ -84,6 +87,13 @@ final class DataListViewModel: DataListViewModelProtocol {
 		cell.configureCell(item: element)
 		cell.delegate = coordinator?.dataListViewController
 		self.activeSegment = (element.data?.selectedID ?? 1)
+		return cell
+	}
+
+	private func makeDefaultCell(for table: UITableView) -> UITableViewCell {
+		// swiftlint:disable force_cast
+		let cell = table.dequeueReusableCell(withIdentifier: DefaultTableViewCell().identifier) as! DefaultTableViewCell
+		// swiftlint:enable force_cast
 		return cell
 	}
 

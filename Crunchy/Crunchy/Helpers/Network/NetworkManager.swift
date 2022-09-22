@@ -8,10 +8,17 @@
 import Foundation
 import Alamofire
 
+enum TestCase: String {
+	case moreVariants = "https://chat.pryaniky.com/json/data-default-order-more-variants.json"
+	case moreItems = "https://chat.pryaniky.com/json/data-custom-order-much-more-items-in-data.json"
+	case customSelectedId = "https://chat.pryaniky.com/json/data-custom-selected-id.json"
+	case customDataInView = "https://chat.pryaniky.com/json/data-default-order-custom-data-in-view.json"
+}
+
 struct NetworkManager: GetData {
 
 	static let shared = NetworkManager()
-	private let baseURL = "https://pryaniky.com/static/json/sample.json"
+	private let baseURL = TestCase.customDataInView.rawValue
 
 	private init() {}
 

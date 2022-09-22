@@ -14,6 +14,7 @@ final class DataListView: UIView {
 	let textCellIdentifier = TextTableViewCell().identifier
 	let imageCellIdentifier = ImageTableViewCell().identifier
 	let selectorTableViewCell = SelectorTableViewCell().identifier
+	let defaultTableViewCell = DefaultTableViewCell().identifier
 
 	// MARK: - Subviews
 
@@ -23,6 +24,7 @@ final class DataListView: UIView {
 		tableView.register(TextTableViewCell.self, forCellReuseIdentifier: textCellIdentifier)
 		tableView.register(ImageTableViewCell.self, forCellReuseIdentifier: imageCellIdentifier)
 		tableView.register(SelectorTableViewCell.self, forCellReuseIdentifier: selectorTableViewCell)
+		tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: defaultTableViewCell)
 		tableView.backgroundColor = .clear
 		tableView.separatorStyle = .none
 		return tableView
